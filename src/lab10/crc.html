@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>CRC</title>
+<script type="text/javascript" src="jquery.js"></script> 
+<script>
+function crc()
+{
+	var userInput = $("#userInput").val();
+	var A=new Array();
+	var C=new Array();
+	var tempArray = userInput.split('');
+	var B=new Array();
+	A = [0,0,0,0,0,0,0,0];
+	
+	//alert(userInput);
+	var counter =0;
+	var i;
+	for (i=0; i<userInput.length;i+=1)
+	{
+		C[i] = tempArray[i];
+	}
+	//alert (A);
+	var j = 1;
+	//alert (A[A.length-j]);
+	for (i = 0; i < C.length;i+=1)
+	{
+		B[0] = C[C.length-j];
+		B[1] = A[0];
+		B[2] = A[1] ^ A[7];
+		B[3] = A[2] ^ A[7];
+		B[4] = A[3] ^ A[7];
+		B[5] = A[4];
+		B[6] = A[5];
+		B[7] = A[6];
+		//A = B;
+		j+=1;
+		for(var x=0; x<8; x++){
+			A[x]=B[x];
+		}
+//alert(A);		
+	}
+
+	alert ("CRC output: "+A);
+//bit error crc	
+if (C[0]==1)
+{
+	C[0]=0;
+}
+else C[0]=1;
+//alert("this is input number element 0 flipped: "+C);
+A = [0,0,0,0,0,0,0,0];
+B = [0,0,0,0,0,0,0,0];
+var w = 1;
+	for (i = 0; i < C.length;i+=1)
+	{
+		B[0] = C[C.length-w];
+		B[1] = A[0];
+		B[2] = A[1] ^ A[7];
+		B[3] = A[2] ^ A[7];
+		B[4] = A[3] ^ A[7];
+		B[5] = A[4];
+		B[6] = A[5];
+		B[7] = A[6];
+		//A = B;
+		w+=1;
+		for(var x=0; x<8; x++){
+			A[x]=B[x];
+		}
+//alert(A);		
+	}
+
+	alert ("CRC output with bit element position 0 flipped: " + A);
+	
+}
+</script>
+</head>
+<body style="background-image:url('matrix.gif');">
+<div id="wrapper" style="background-color:#C0C0C0; color:#5F5678; width:350; height:200; position:absolute; top:140; left: 454; ">
+<div id="enterBits"><h2>Enter a binary sequence: <br /></h2></div>
+<input id="userInput" type="textarea"></input>
+<button type="button" onClick="crc()">Submit</input>
+</div>
+</body>
+</html>

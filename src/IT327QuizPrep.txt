@@ -1,0 +1,9 @@
+Inductors: generate an opposing voltage proportional to the rate of change in current in a circuit.
+This property also is called self-inductance to discriminate it from mutual inductance, describing the voltage induced in one electrical circuit
+by the rate of change of the electric current in another circuit.
+
+
+Capacitors: When there is a potential difference (voltage) across the conductors, a static electric field develops across the dielectric,
+causing positive charge to collect on one plate and negative charge on the other plate. Energy is stored in the electrostatic field.
+An ideal capacitor is characterized by a single constant value, capacitance, measured in farads. This is the ratio of the electric charge on
+each conductor to the potential difference between them.
